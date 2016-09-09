@@ -25,7 +25,7 @@ angular.module('learnExchange')
   };
 
   service.addAnswer = function(id, answer){
-    return $http.posts('/questions/' + id + '/answers.json', answer);
+    return $http.post('/questions/' + id + '/answers.json', answer);
   };
 
   service.upvote = function(question){

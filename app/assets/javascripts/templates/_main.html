@@ -24,24 +24,27 @@
         </div>
       </div>
       <!-- nested view start -->
-      <li><a ui-sref=".detail">Detailed View</a></li>
-      <li><a ui-sref=".normal">Normal View</a></li>
-      <div ui-view></div>
+      <ul class="nav nav-pills">
+        <li role="presentation"><a ui-sref=".detail">Detailed View</a></li>
+        <li role="presentation"><a ui-sref=".normal" >Normal View</a></li>
+        <li role="presentation"><a ui-sref="about" >About</a></li>
+      </ul>
+      <div ui-view style="margin-top:20px;"></div>
   </div>
 
-  <div class="row" ng-show="user.name">
+  <div class="row" ng-show="user.name" style="margin-top:20px;">
       <div class="col-md-12">
         <h1>Ask a Question</h1>
 
-        <form ng-submit="addQuestion()">
+        <form name="questionForm" ng-submit="questionForm.$valid && addQuestion()" novalidate>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Ask..." ng-model="body"></input>
+            <input type="text" class="form-control" placeholder="Ask..." ng-model="body" required></input>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Link to Lesson" ng-model="lessonLink"></input>
+            <input type="url" ng-patter="url" class="form-control" placeholder="Link to Lesson: http://learn.co" ng-model="lessonLink" required></input>
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Link to Github Repo" ng-model="githubLink"></input>
+            <input type="url" class="form-control" placeholder="Link to Github Repo: http://www.github.com" ng-model="githubLink" required></input>
           </div>
           <button type="submit" class="btn btn-primary">Question</button>
         </form>

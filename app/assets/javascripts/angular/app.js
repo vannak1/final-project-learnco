@@ -1,6 +1,6 @@
 angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
   .config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('main.normal');
+    $urlRouterProvider.otherwise('main');
 
     $stateProvider
       .state('main', {
@@ -15,11 +15,11 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
         }
       })
       .state('main.detail', {
-        url: '/main-detailed',
-        templateUrl: '_mainDetailed.html'
+        url: '/main-detail',
+        templateUrl: '_mainDetail.html'
       })
       .state('main.normal', {
-        url: '/main-normal',
+        url: '',
         templateUrl: '_mainNormal.html'
       })
       .state('questions', {
@@ -31,6 +31,10 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
             return questions.getShow($stateParams.id);
           }]
         }
+      })
+      .state('about', {
+        url: '/about',
+        templateUrl: 'about.html',
       })
       .state('login', {
         url: '/login',

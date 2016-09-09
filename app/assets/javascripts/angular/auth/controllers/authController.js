@@ -3,13 +3,13 @@ angular.module('learnExchange')
                        function($scope, $state, Auth){
    $scope.login = function() {
      Auth.login($scope.user).then(function(){
-       $state.go('main');
+       $state.go('main.normal');
      });
    };
 
    $scope.register = function() {
      Auth.register($scope.user).then(function(){
-       $state.go('main');
+       $state.go('main.normal');
      });
    };
 

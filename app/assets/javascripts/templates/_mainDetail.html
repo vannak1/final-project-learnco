@@ -1,4 +1,4 @@
-<div class="col-md-12" ng-repeat="question in questions | filter: query | orderBy: orderProp">
+<div class="col-md-12" class="wells" ng-repeat="question in questions | filter: query | orderBy: orderProp">
    <span class="glyphicon glyphicon-chevron-up" ng-click="incrementUpvotes(question)"></span>
   {{question.body}} </br>
   learn: {{question.lessonLink}}</br>

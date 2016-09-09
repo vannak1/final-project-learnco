@@ -1,11 +1,15 @@
 angular.module('learnExchange')
-  .controller('QuestionsController', ['$scope', 'questions', 'question',
-                              function($scope, questions, question){
+  .controller('QuestionsController', ['$scope', 'questions', 'question', 'Auth',
+                              function($scope, questions, question, Auth){
   $scope.question = questions.question;
+
+  Auth.currentUser().then(function(user){
+    $scope.user = user;
+  });
 
   $scope.addAnswer = function(){
     if($scope.body === '') { return; }
-    $scope.addAnswer(question.id, {
+    questions.addAnswer($scope.question.id, {
       body: $scope.body,
       author: 'user',
       votes: 0
