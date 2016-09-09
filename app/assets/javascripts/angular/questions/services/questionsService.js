@@ -3,7 +3,8 @@ angular.module('learnExchange')
 .factory('questions', ['$http', function($http){
   var service = {
     questions: [],
-    question: []
+    question: [],
+    userQuestions: []
   }
 
   service.getQuestions = function(){
@@ -15,6 +16,13 @@ angular.module('learnExchange')
   service.getShow = function(id){
     return $http.get('/questions/' + id + '.json').success(function(data){
       angular.copy(data, service.question);
+    })
+  };
+
+  service.getUsersQuestions = function(id){
+    return $http.get('/users/' + id + '.json').success(function(data){
+      angular.copy(data, service.userQuestions);
+      console.log(data);
     })
   };
 

@@ -13,5 +13,7 @@ Rails.application.routes.draw do
       put '/upvote' => 'questions#upvote'
     end
   end
+
+  get '/users/:id', to: 'uquestions#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

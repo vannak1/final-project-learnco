@@ -1,0 +1,7 @@
+<div class="col-md-12" ng-repeat="question in userQuestions | filter: query | orderBy: orderProp">
+   <span class="glyphicon glyphicon-chevron-up" ng-click="incrementUpvotes(question)"></span>
+  {{question.body}} - {{question.votes}} by {{question.user.name}}
+  <span>
+    <a href="#/questions/{{question.id}}">Show</a>
+  </span>
+</div>

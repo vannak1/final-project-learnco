@@ -32,9 +32,19 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
           }]
         }
       })
+      .state('users', {
+        url: '/users/{id}',
+        templateUrl: 'main/_users.html',
+        controller: 'UsersController',
+        resolve: {
+          question: ['$stateParams', 'questions', function($stateParams, questions){
+            return questions.getUsersQuestions($stateParams.id);
+          }]
+        }
+      })
       .state('about', {
-        url: 'main/about',
-        templateUrl: 'about.html',
+        url: '/about',
+        templateUrl: 'main/about.html',
       })
       .state('login', {
         url: '/login',
@@ -55,5 +65,5 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
             $state.go('home');
           })
         }]
-      });
+      })
 });
