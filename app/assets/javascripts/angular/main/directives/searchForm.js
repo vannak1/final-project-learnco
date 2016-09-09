@@ -3,7 +3,7 @@ angular.module('learnExchange')
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: '_searchForm.html',
+    templateUrl: 'main/_searchForm.html',
     controller: 'MainController',
   }
-  });
+});

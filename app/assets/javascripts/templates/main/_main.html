@@ -13,5 +13,5 @@
       <div ui-view style="margin-top:10px;"></div>
   </div>
   <hr>
-  <button class="btn btn-default" ng-click="showForm = !showForm" ng-model="showForm">{{showForm ? "Cancel" : "Ask a Question"}}</button>
+  <button ng-show="user" class="btn btn-default" ng-click="showForm = !showForm" ng-model="showForm">{{showForm ? "Cancel" : "Ask a Question"}}</button>
   <div ng-show="showForm" class="well"><question-form>Question</question-form></div>

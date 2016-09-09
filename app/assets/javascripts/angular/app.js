@@ -5,7 +5,7 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
     $stateProvider
       .state('main', {
         url: '/main',
-        templateUrl: '_main.html',
+        templateUrl: 'main/_main.html',
         controller: 'MainController',
         abstract: true,
         resolve: {
@@ -16,15 +16,15 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
       })
       .state('main.detail', {
         url: '/main-detail',
-        templateUrl: '_mainDetail.html'
+        templateUrl: 'main/_mainDetail.html'
       })
       .state('main.normal', {
         url: '',
-        templateUrl: '_mainNormal.html'
+        templateUrl: 'main/_mainNormal.html'
       })
       .state('questions', {
         url: '/questions/{id}',
-        templateUrl: '_questions.html',
+        templateUrl: 'questions/_questions.html',
         controller: 'QuestionsController',
         resolve: {
           question: ['$stateParams', 'questions', function($stateParams, questions){
@@ -33,12 +33,12 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
         }
       })
       .state('about', {
-        url: '/about',
+        url: 'main/about',
         templateUrl: 'about.html',
       })
       .state('login', {
         url: '/login',
-        templateUrl: '_login.html',
+        templateUrl: 'auth/_login.html',
         controller: 'AuthController',
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
@@ -48,7 +48,7 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
       })
       .state('register', {
         url: '/register',
-        templateUrl: '_register.html',
+        templateUrl: 'auth/_register.html',
         controller: 'AuthController',
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
