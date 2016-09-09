@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :upvote]
   def index
     respond_with Question.all
   end
@@ -8,7 +9,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    respond_with Question.create(question_params)
+    respond_with Question.create(question_params.merge(user_id: current_user.id))
   end
 
   def upvote
@@ -20,6 +21,6 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:body, :lessonLink, :githubLink)
+    params.require(:question).permit(:body, :lessonLink, :githubLink, :votes)
   end
 end

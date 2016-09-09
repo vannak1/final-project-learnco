@@ -5,7 +5,8 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
-  <body ng-app="learnExchange">
+  <body ng-app='learnExchange'>
+    <div ng-include="'_nav.html'"></div>
     <ui-view></ui-view>
   </body>
 </html>

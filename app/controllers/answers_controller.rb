@@ -1,7 +1,8 @@
 class AnswersController < ApplicationController
+  before_filter :authenticate_user!, only: [:create, :upvote]
   def create
     @question = Question.find(params[:question_id])
-    @answer = @question.answers.create(answer_params)
+    @answer = @question.answers.create(answer_params.merge(user_id: current_user.id))
 
     respond_with @question, @answer
   end
@@ -15,7 +16,7 @@ class AnswersController < ApplicationController
   end
 
   private
-  def question_params
-    params.require(:answer).permit(:body, :resource)
+  def answer_params
+    params.require(:answer).permit(:body, :votes)
   end
 end

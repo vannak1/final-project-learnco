@@ -7,17 +7,32 @@
     </div>
   </div>
   <div class="row">
-      <div class="col-md-12" ng-repeat="question in questions | orderBy: '-votes'">
-         <span ng-click="incrementUpvotes(question)">^</span>
-        {{question.body}} - {{question.votes}}
-        <span>
-          <a href="#/questions/{{question.id}}">Question Show</a>
-        </span>
+      <div class="col-md-12">
+        <div class="form-group">
+          Search: <input class="form-control" ng-model="query" />
+          Sort by: <form name="sort" class="form-group">
+                      <label>
+                        <input type="radio" ng-model="orderProp" value="votes">
+                        Ascending
+                      </label><br/>
+
+                      <label>
+                        <input type="radio" ng-model="orderProp" value="-votes">
+                        Descending
+                      </label><br/>
+                     </form>
+        </div>
       </div>
+      <!-- nested view start -->
+      <li><a ui-sref=".detail">Detailed View</a></li>
+      <li><a ui-sref=".normal">Normal View</a></li>
+      <div ui-view></div>
   </div>
-  <div class="row">
+
+  <div class="row" ng-show="user.name">
       <div class="col-md-12">
         <h1>Ask a Question</h1>
+
         <form ng-submit="addQuestion()">
           <div class="form-group">
             <input type="text" class="form-control" placeholder="Ask..." ng-model="body"></input>
