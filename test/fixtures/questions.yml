@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  lessonLink: MyString
+  githubLink: MyString
+  votes: 1
+
+two:
+  body: MyString
+  lessonLink: MyString
+  githubLink: MyString
+  votes: 1
