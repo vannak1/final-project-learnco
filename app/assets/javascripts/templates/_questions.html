@@ -9,19 +9,5 @@
   </p>
 </div>
 
-<blockquote ng-repeat="answer in question.answers | orderBy:'-upvotes'">
-  <span class="glyphicon glyphicon-chevron-up"
-    ng-click="incrementUpvotes(answer)"></span>
-  {{answer.votes}} - by {{answer.user.name}}
-  <b>{{answer.body}}</b>
-</blockquote>
-
-<div class="answer">
-  <form name="answerForm" ng-submit="answerForm.$valid && addAnswer()" ng-show="user.name" novalidate style="margin-top:20px;">
-    <h3>Add Answer</h3>
-    <div class="form-group">
-      <textarea class="form-control" rows="4" placeholder="Answer" ng-model="body" ng-minLenght="10" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
-  </form>
-</div>
+<answer>Here's the answer</answer>
+<answer-form>Answer</answer-form>

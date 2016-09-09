@@ -1,0 +1,15 @@
+<div class="form-group navbar-form navbar-left">
+  Search: <input class="form-control" ng-model="query" />
+  Sort by: <form name="sort" class="form-group">
+              <label>
+                <input type="radio" ng-model="orderProp" value="votes">
+                Ascending
+              </label>
+              <label>
+                <input type="radio" ng-model="orderProp" value="-votes">
+                Descending
+              </label>
+             </form>
+             <a style="margin-left: 30px;" ui-sref=".detail">Detailed</a> - <a ui-sref=".normal" >Normal</a>
+
+</div>

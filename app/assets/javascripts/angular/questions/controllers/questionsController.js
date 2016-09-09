@@ -1,6 +1,6 @@
 angular.module('learnExchange')
-  .controller('QuestionsController', ['$scope', 'questions', 'question', 'Auth',
-                              function($scope, questions, question, Auth){
+  .controller('QuestionsController', ['$scope', 'questions', 'Auth',
+                              function($scope, questions, Auth){
   $scope.question = questions.question;
 
   Auth.currentUser().then(function(user){

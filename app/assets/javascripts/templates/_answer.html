@@ -1,0 +1,13 @@
+<div ng-repeat="answer in question.answers | orderBy:'-upvotes'">
+  <div class="well">
+    <b>{{answer.user.name}} answered: </b>
+    <p>{{answer.body}}</p>
+
+    <div>
+      <span class="glyphicon glyphicon-chevron-up"
+        ng-click="incrementUpvotes(answer)"></span>
+      {{answer.votes}} Upvotes
+    </div>
+  </div>
+  <hr>
+</div>

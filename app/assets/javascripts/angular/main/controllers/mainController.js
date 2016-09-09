@@ -24,4 +24,6 @@ angular.module('learnExchange')
     };
 
     $scope.orderProp = '-votes';
+
+    $scope.showForm = false;
 }]);
