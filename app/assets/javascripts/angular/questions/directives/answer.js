@@ -3,7 +3,7 @@ angular.module('learnExchange')
   return {
     restrict: 'E',
     replace: true,
-    templateUrl: 'questions/_answer.html',
+    templateUrl: 'angular/questions/templates/_answer.html',
     controller: 'QuestionsController',
   }
   });

@@ -1,6 +1,6 @@
 angular.module('learnExchange')
 
-.factory('questions', ['$http', function($http){
+.factory('QuestionService', ['$http', function($http){
   var service = {
     questions: [],
     question: [],
@@ -22,7 +22,6 @@ angular.module('learnExchange')
   service.getUsersQuestions = function(id){
     return $http.get('/users/' + id + '.json').success(function(data){
       angular.copy(data, service.userQuestions);
-      console.log(data);
     })
   };
 
@@ -43,8 +42,8 @@ angular.module('learnExchange')
       });
   };
 
-  service.upvoteAnswer = function(question, answer){
-    return $http.put('/questions/' + question.id + '/answers/' + answer.id + '/upvote.json')
+  service.upvoteAnswer = function(id, answer){
+    return $http.put('/questions/' + id + '/answers/' + answer.id + '/upvote.json')
       .success(function(data){
         answer.votes += 1;
       });

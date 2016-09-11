@@ -18,4 +18,4 @@ angular.module('learnExchange')
     $scope.$on('devise:logout', function (e, user){
       $scope.user = {};
     });
-  }]);
+}]);

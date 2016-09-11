@@ -1,6 +1,8 @@
 angular.module('learnExchange')
-  .controller('MainController', ['$scope', 'questions', 'Auth', function($scope, questions, Auth){
-    $scope.questions = questions.questions;
+  .controller('MainController', ['$scope', 'QuestionService', 'Auth', function($scope, QuestionService, Auth){
+    $scope.questions = QuestionService.questions;
+    $scope.orderProp = '-votes';
+    $scope.showForm = false;
 
     Auth.currentUser().then(function(user){
       $scope.user = user;
@@ -20,10 +22,8 @@ angular.module('learnExchange')
     };
 
     $scope.incrementUpvotes = function(question) {
-      questions.upvote(question);
+      QuestionService.upvote(question);
     };
 
-    $scope.orderProp = '-votes';
 
-    $scope.showForm = false;
 }]);

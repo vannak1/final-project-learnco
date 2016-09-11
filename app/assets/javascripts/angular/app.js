@@ -5,64 +5,64 @@ angular.module('learnExchange', ['ui.router', 'templates', 'Devise'])
     $stateProvider
       .state('main', {
         url: '/main',
-        templateUrl: 'main/_main.html',
+        templateUrl: 'angular/main/templates/_main.html',
         controller: 'MainController',
         abstract: true,
         resolve: {
-          questionPromise: ['questions', function(questions){
-            return questions.getQuestions();
+          questionPromise: ['QuestionService', function(QuestionService){
+            return QuestionService.getQuestions();
           }]
         }
       })
       .state('main.detail', {
         url: '/main-detail',
-        templateUrl: 'main/_mainDetail.html'
+        templateUrl: 'angular/main/templates/_mainDetail.html'
       })
       .state('main.normal', {
         url: '',
-        templateUrl: 'main/_mainNormal.html'
+        templateUrl: 'angular/main/templates/_mainNormal.html'
       })
       .state('questions', {
         url: '/questions/{id}',
-        templateUrl: 'questions/_questions.html',
+        templateUrl: 'angular/questions/templates/_questions.html',
         controller: 'QuestionsController',
         resolve: {
-          question: ['$stateParams', 'questions', function($stateParams, questions){
-            return questions.getShow($stateParams.id);
+          questionPromise: ['$stateParams', 'QuestionService', function($stateParams, QuestionService){
+            return QuestionService.getShow($stateParams.id);
           }]
         }
       })
       .state('users', {
         url: '/users/{id}',
-        templateUrl: 'main/_users.html',
+        templateUrl: 'angular/questions/templates/_userQuestion.html',
         controller: 'UsersController',
         resolve: {
-          question: ['$stateParams', 'questions', function($stateParams, questions){
-            return questions.getUsersQuestions($stateParams.id);
+          questionPromise: ['$stateParams', 'QuestionService', function($stateParams, QuestionService){
+            return QuestionService.getUsersQuestions($stateParams.id);
           }]
         }
       })
       .state('about', {
         url: '/about',
-        templateUrl: 'main/about.html',
+        templateUrl: 'angular/main/templates/about.html',
       })
       .state('login', {
         url: '/login',
-        templateUrl: 'auth/_login.html',
+        templateUrl: 'angular/auth/templates/_login.html',
         controller: 'AuthController',
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
-            $state.go('home');
+            $state.go('main.normal');
           })
         }]
       })
       .state('register', {
         url: '/register',
-        templateUrl: 'auth/_register.html',
+        templateUrl: 'angular/auth/templates/_register.html',
         controller: 'AuthController',
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
-            $state.go('home');
+            $state.go('main.normal');
           })
         }]
       })
